@@ -46,7 +46,7 @@ function onInput(e) {
 }
 
 function onFetchError(error) {
-  Notiflix.Notify.failure('Sorry, there is no country with such name');
+  Notiflix.Notify.failure('Oops, there is no country with that name');
 }
 
 function countyrMarkup({
