@@ -17,10 +17,8 @@ function onInput(e) {
   e.preventDefault();
   refs.countryList.innerHTML = '';
   refs.countryInfo.innerHTML = '';
-  console.log(e.target.value.trim());
   return fetchCountries(e.target.value.trim())
     .then(country => {
-      console.log(country);
       if (country.length >= 10) {
         refs.countryList.innerHTML = '';
         refs.countryInfo.innerHTML = '';
@@ -59,20 +57,12 @@ function countyrMarkup({
   languages,
 }) {
   const langList = Object.values(languages).join(', ');
-  const countryInfo = `<div class = 'country-card'><img src = '${svg}' alt = 'flag of ${official}' width='40' height='30' class = 'country-img'/><p class = 'country-name'>${official}</p></div>
+  return `<div class = 'country-card'><img src = '${svg}' alt = 'flag of ${official}' width='40' height='30' class = 'country-img'/><p class = 'country-name'>${official}</p></div>
   <ul class = 'country-list'><li class = 'country-item'><p class = 'country-item-name'>Capital: <span class = 'country-item-text'>${capital}</span></p></li>
   <li class = 'country-item'><p class = 'country-item-name'>Population: <span class = 'country-item-text'>${population}</span></p></li>
   <li class = 'country-item'><p class = 'country-item-name'>Languages: <span class = 'country-item-text'>${langList}</span></p></li></ul>`;
-  console.log(countryInfo);
-  return countryInfo;
 }
 
 function countryListMarkup({ name: { official }, flags: { svg } }) {
-  const countryList = `<li class = 'country-list-item'><img class = 'country-list-img' src = '${svg}' alt = 'Flag of ${official}' width = '30' height = '20'/><p class = 'country-list-name'>${official}</p></li>`;
-  console.log(countryList);
-  return countryList;
-}
-
-function countryRender(country) {
-  refs.countryInfo.insertAdjacentHTML('beforeend', countyrMarkup(country));
+  return `<li class = 'country-list-item'><img class = 'country-list-img' src = '${svg}' alt = 'Flag of ${official}' width = '30' height = '20'/><p class = 'country-list-name'>${official}</p></li>`;
 }
